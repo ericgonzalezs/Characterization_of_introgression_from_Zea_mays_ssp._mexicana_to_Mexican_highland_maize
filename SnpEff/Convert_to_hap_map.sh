@@ -7,7 +7,7 @@ sed '1d' PTNGXTotal_Fosforo_Li_low_mex_par_trip_ch_new_qLi.geno_WH.txt > PTNGXTo
 
 awk -F"\t" -v OFS="\t" '{print "S"$1"_"$2, $1, $2, "+", "NA", "NA", "NA", "NA", "NA", "NA", $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14}' PTNGXTotal_Fosforo_Li_low_mex_par_trip_ch_new_qLi.geno_SH.txt > PTNGXTotal_Fosforo_Li_low_mex_par_trip_ch_new_qLi.geno_SH_faltaalleles.txt
 
-#el siguiente comando tarda demasiado
+#the next command line was to slow
 #awk -v OFS="\t" 'FNR==NR{a[FNR]=$0;next} {$1=$1 OFS a[FNR]} 1' alleles_ch.txt PTNGXTotal_Fosforo_Li_low_mex_par_trip_ch_new_qLi.geno_SH_faltaalleles.txt > Para_tassel_SH.hap.txt
 
 paste alleles_ch.txt PTNGXTotal_Fosforo_Li_low_mex_par_trip_ch_new_qLi.geno_SH_faltaalleles.txt > Para_tassel_without_order.txt
@@ -26,7 +26,7 @@ rm PTNGXTotal_Fosforo_Li_low_mex_par_trip_ch_new_qLi.geno_SH.txt
 
 rm Para_tassel_without_order.txt
 
-#no carga completo en tassel así que voy a separar por chromosoma
+#To upload the vcf file to TASSEL, the file was separated by chromosome
 sed '1d' Para_tassel_WH.hap.txt > Para_tassel_SH.hap.txt
 
 awk -F"\t" -v OFS="\t" '$3 == 1 {print $0}' Para_tassel_SH.hap.txt  > Chr1_Para_tassel_SH.hap.txt
@@ -51,7 +51,7 @@ cat header_primero.txt Chr8_Para_tassel_SH.hap.txt > Chr8_Para_tassel_WH.hap.txt
 cat header_primero.txt Chr9_Para_tassel_SH.hap.txt > Chr9_Para_tassel_WH.hap.txt
 cat header_primero.txt Chr10_Para_tassel_SH.hap.txt > Chr10_Para_tassel_WH.hap.txt
 
-#where converted to a vcf using the graphic interphase of TASSEL
+#each chromosome was converted to a vcf file using the graphic interphase of TASSEL and then was merged:
 
 grep "#" Chr1_todos.vcf > header_vcf.txt
 grep -v "#" Chr1_todos.vcf > Chr1_todos_SH.vcf
