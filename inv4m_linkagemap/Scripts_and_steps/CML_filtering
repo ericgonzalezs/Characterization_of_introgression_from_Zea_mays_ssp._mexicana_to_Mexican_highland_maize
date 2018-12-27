@@ -1,0 +1,27 @@
+Using the GBS SNP panel for CMLs, I selected the CMLs that it's possible that carry the inversion using tassel.
+
+CML242(Krakowsky):MRG:2:250042358
+CML243:MRG:4:250056527
+CML244:MRG:4:250056528
+CML246:81FE7ABXX:7:250031810
+CML349:MRG:4:250056664
+CML350:MRG:4:250056665
+CML354:MRG:4:250056669
+CML356:MRG:4:250056671
+CML455:MRG:4:250056928
+CML456(Krakowsky):MRG:2:250041564
+CML457:MRG:4:250056930
+CML458:MRG:4:250056931
+CML459:MRG:4:250056932
+CML460:MRG:4:250056933
+CML524:MRG:4:250057028
+CML525:MRG:4:250057029
+CML526:MRG:4:250057030
+CML527:MRG:4:250057031
+CML529-D:MRG:4:250057066
+
+Then I keep the sites that have data in at least 5 plants with a minimum frequency of 0.1 (~2 individuals) and mayor frequency of 1. 
+Using Tassel I select CML457 and I converted it's SNP data to a vcf file.
+
+Pra tener más sitios ahora use el archivo con 544 taxa y filtere para tener sitios con al menos datos en 10 individuos, con una frecuencia mínima de 0.05 y máxima de 1.0. después deleccione 
+a CML457 y lo convertí ern VCF, tuve 362,013 sitios, con el protocolo pasado tube 198,572, así que obtuve con este nuevo método casí el doble de sitios.
