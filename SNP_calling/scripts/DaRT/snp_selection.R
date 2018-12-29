@@ -12,7 +12,7 @@ nrow(BLast_subset)
 
 write.table(BLast_subset, file = "Blast_subset_evalmenor0.01.txt", sep = "\t", quote = FALSE, row.names = FALSE)
 
-#quite los rows sin par con  awk -F'|' 'NR==FNR{s[$1]++;next} (s[$1]>1)' Blast_subset_evalmenor0.01.txt Blast_subset_evalmenor0.01.txt > Solo_pares.txt
+#remove unpaired rows using awk:  awk -F'|' 'NR==FNR{s[$1]++;next} (s[$1]>1)' Blast_subset_evalmenor0.01.txt Blast_subset_evalmenor0.01.txt > Solo_pares.txt
 
 Solo_pares <- read.table("Solo_pares.txt", header = FALSE, sep = "\t")
 nrow(Solo_pares)/2
@@ -24,7 +24,7 @@ Solo_pares_1match_SNP <- add_column(Solo_pares_1match, SNP_pos_bien= Solo_pares_
 
 write.table(Solo_pares_1match_SNP, file ="Solo_pares_1match_SNP.txt", sep = "\t", quote = FALSE, row.names = FALSE)
 
-##Filtre posiciones únicas así  awk -F'\t' 'NR==FNR{s[$10]++;next} (s[$10]==2)' Solo_pares_1match_SNP_solo_paresagain.txt Solo_pares_1match_SNP_solo_paresagain.txt  > Solo_pares_1match_solo_posiciones_unicas.txt
+##Keeping sites with unique possitions using awk: awk -F'\t' 'NR==FNR{s[$10]++;next} (s[$10]==2)' Solo_pares_1match_SNP_solo_paresagain.txt Solo_pares_1match_SNP_solo_paresagain.txt  > Solo_pares_1match_solo_posiciones_unicas.txt
 
 Solo_pares_1match_solo_posiciones_unicas <- read.table("Solo_pares_1match_solo_posiciones_unicas.txt", header = FALSE, sep = "\t")
 nrow(Solo_pares_1match_solo_posiciones_unicas)/2
@@ -41,13 +41,13 @@ Hap <- read.csv("SNPs_HAPMAP Format_Eric&Ruairidh.csv")
 nrow(Hap)
 BLast_hap <- read.table("BLAST_HAPMAP_Eric.Report.csv", sep = ",", header = TRUE)
 
-#mergir
+#merge
 Hap$AlleleID.1
 Mergidas <- merge(Para_mergir_col1y10, Hap, by.x = c("V1"), by.y = c("AlleleID.1"))
 write.table(Mergidas, file ="Hap_SNPs_unicos_posiciones.txt", sep = "\t", quote = FALSE, row.names = FALSE)
 nrow(Mergidas)
 
-#pasar a formato hapmap
+#convert to hapmap hapmap
 ncol(Mergidas)
 Hap_mergidas_raw <- Mergidas[ ,c(1,3,18:ncol(Mergidas))]
 
