@@ -1,2 +1,0 @@
-Once that I did the hamaps I open them in tassel, I merge them, I separate the data by chromosomes I select chr4 and I keep sites that are in at least 2 individuals with a minor allele frequency of 0.1 and a major allele frequency of 0.9. Keeping sites from position 146135604 to 191045584.
-El nuevo porceso de selección me dio un par de miles más de SNPs y eso me permitió sleccionar 6 SNPs dentro de la inversión.
